@@ -25,6 +25,9 @@ export function NavMenu() {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
                 </NavItem>
+                <NavItem>
+                 <NavLink tag={Link} className="text-dark" to="/Admin">Admin</NavLink>
+                </NavItem>
               </ul>
             </Collapse>
           </Container>
