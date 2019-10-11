@@ -3,44 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PropMan.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PropMan.Controllers
 {
-    [Route("api/[controller]")]
     public class PropertiesController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+         PropertyDataAccessLayer objProperty = new PropertyDataAccessLayer();  
+       
+        [HttpGet]  
+        [Route("api/Property/Index")]  
+        public IEnumerable<Properties> Index()  
+        {  
+            return objProperty.GetAllProperties();  
+        }  
+        [HttpPost]  
+        [Route("api/Property/Create")]  
+        public int Create(Properties property)  
+        {  
+            return objProperty.AddProperty(property);  
+        }  
+        [HttpGet]  
+        [Route("api/Property/Details/{id}")]  
+        public Properties Details(int id)  
+        {  
+            return objProperty.GetPropertyData(id);  
+        }  
+        [HttpPut]  
+        [Route("api/Property/Edit")]  
+        public int Edit(Properties property)  
+        {  
+            return objProperty.UpdateProperty(property);  
+        }  
+        [HttpDelete]  
+        [Route("api/Property/Delete/{id}")]  
+        public int Delete(int id)  
+        {  
+            return objProperty.DeleteProperty(id);  
+        }  
+        [HttpGet]  
+        [Route("api/Property/GetPropertiesList")]  
+        public IEnumerable<Properties> Details()  
+        {  
+            return objProperty.GetProperties();  
+        } 
     }
 }

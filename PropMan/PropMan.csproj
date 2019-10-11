@@ -35,8 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Admin.tsx" />
     <None Remove="ClientApp\src\components\Counter.js" />
-    <None Remove="ClientApp\src\components\file.tsx" />
+    <None Remove="ClientApp\src\components\FetchProperty.tsx" />
     <None Remove="ClientApp\src\components\JavaScript.js" />
     <None Remove="ClientApp\src\components\jsx.jsx" />
   </ItemGroup>

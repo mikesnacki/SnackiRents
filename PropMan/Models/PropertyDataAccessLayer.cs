@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropMan.Models
 {
-    public class PropertyDataAccesssLayer
+    public class PropertyDataAccessLayer
     {
         snacki_rentsContext db = new snacki_rentsContext();
         public IEnumerable<Properties> GetAllProperties()
@@ -46,7 +46,7 @@ namespace PropMan.Models
                 throw;
             }
         }  
-        public Properties GetEmployeeData(int id)
+        public Properties GetPropertyData(int id)
         {
             try
             {
@@ -58,7 +58,6 @@ namespace PropMan.Models
                 throw;
             }
         }
-        //To Delete the record of a particular employee    
         public int DeleteProperty(int id)
         {
             try
@@ -73,5 +72,12 @@ namespace PropMan.Models
                 throw;
             }
         }
+
+        public List<Properties> GetProperties()  
+        {  
+            List<Properties> lstProperties = new List<Properties>();  
+            lstProperties = (from ProptertiesList in db.Properties select ProptertiesList).ToList();  
+            return lstProperties;  
+        } 
     }
 }
