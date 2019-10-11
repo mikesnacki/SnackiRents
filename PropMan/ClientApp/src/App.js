@@ -5,7 +5,7 @@ import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { AdminForm } from './components/Admin';
-import './custom.css'
+import './style.scss'
 
 export default class App extends Component {
   static displayName = App.name;

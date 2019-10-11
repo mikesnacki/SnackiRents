@@ -1,27 +1,27 @@
-/* Provide sufficient contrast against white background */
+﻿/* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #E01A76;
+    color: #E01A76;
 }
 
-.admin{
+.admin {
     background-color: #e5e5e5;
     border-radius: 5px;
     padding: 1vh 1vw;
     box-shadow: 2px 2px 2px 0px #3c4245;
 }
 
-.align-center{
+.align-center {
     text-align: center;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .flex-row {
@@ -30,48 +30,50 @@ code {
     justify-content: center;
 }
 
-.flex-col{
+.flex-col {
     display: flex;
     flex-flow: column;
     align-items: center;
 }
 
-.container-padding{
+.container-padding {
     padding: 3vh 3vw;
     align-items: center;
 }
 
-.no-padding-bottom{
+.no-padding-bottom {
     padding: 0vh 3vw;
-
 }
-.container{
+
+.container {
     padding: 0 3vw;
     align-items: center;
 }
 
-.container-padding label, input, select{
+.container-padding {
+    label, input, select {
     margin: 0.5vh 1vw;
+    }
 }
 
-.btn-submit{
+.btn-submit {
     display: block;
     margin: 0.5vh auto;
 }
 
 textarea {
     width: 100%;
-    height:100%;
+    height: 100%;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
 }
 
-.display-block{
+.display-block {
     display: block;
 }
 
-select, input{
+select, input {
     width: 180px;
     height: 30px;
 }

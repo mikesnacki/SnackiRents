@@ -55,7 +55,11 @@ export const AdminForm =()=> {
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
-                </div>
+                    </div>
+                    <div className="flex-col fill-width">
+                        <label className="display-block">Image</label>
+                        <input name="propertyImage" placeholder="image URL"></input>
+                    </div>
                 </div>
                 <div className="flex-col container">
                     <label className="display-block">Property Description</label>
