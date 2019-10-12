@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, Component } from 'react'
+﻿import React, { Component } from 'react'
 import {PropertyData} from './FetchProperty'
 
 interface AddPropertyDataState {
@@ -86,7 +86,7 @@ export class AdminForm extends Component<Props> {
                         <input name="propertyImage" placeholder="image URL"></input>
                     </div>
                 </div>
-                <div className="flex-col container">
+                <div className="flex-col">
                     <label className="display-block">Property Description</label>
                     <textarea name="propertyDescription" placeholder="Property Description"></textarea>
                 </div>

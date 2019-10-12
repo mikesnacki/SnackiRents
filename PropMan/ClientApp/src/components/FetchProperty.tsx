@@ -1,6 +1,4 @@
 ﻿import React, {Component} from 'react';
-import { RouteComponentProps } from 'react-router';
-import { Link, NavLink } from 'react-router-dom';  
 
 interface FetchPropertyDataState {
     propList: PropertyData[];
@@ -27,7 +25,7 @@ export class FetchPropData extends Component<Props, FetchPropertyDataState> {
     }
 
     public render() {  
-        let contents = (true === true) ?
+        let contents = (this.state.loading === true) ?
         <p>Loading properties list</p> :
             this.renderPropertiesTable(this.state.propList)
 
@@ -41,8 +39,8 @@ export class FetchPropData extends Component<Props, FetchPropertyDataState> {
         <div>
             {propList.map(prop =>
                 <div key={prop.propertyId}>
-                    <img src={prop.propertyImage}></img>
-                    <div>{prop.propertyName}</div>
+                    <img src={prop.propertyImage} 
+                    alt={`${prop.propertyName} is a gorgeous and affordable residence`}></img>
                     <div>{prop.propertyName}</div>
                     <div>{prop.propertyAddress}</div>
                     <div>{prop.propertyCity}</div>
