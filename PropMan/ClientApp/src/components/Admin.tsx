@@ -3,11 +3,31 @@ import {PropertyData} from './FetchProperty'
 
 interface AddPropertyDataState {
     loading: boolean;
-    propList: Array<any>;
     propData: PropertyData;
 }
 
 interface Props {}
+
+interface EventTarget {
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+    dispatchEvent(evt: Event): boolean;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+}
+
+interface SyntheticEvent {
+    bubbles: boolean;
+    cancelable: boolean;
+    currentTarget: EventTarget;
+    defaultPrevented: boolean;
+    eventPhase: number;
+    isTrusted: boolean;
+    nativeEvent: Event;
+    preventDefault(): void;
+    stopPropagation(): void;
+    target: EventTarget;
+    timeStamp: Date;
+    type: string;
+}
 
 export class AdminForm extends Component<Props, AddPropertyDataState> {  
     
@@ -15,40 +35,38 @@ export class AdminForm extends Component<Props, AddPropertyDataState> {
         super(props)
         this.state={
             loading: true,
-            propList:[],
             propData: new PropertyData,
         }
-        // this.handleSave = this.handleSave.bind(this)
+        this.handleSave = this.handleSave.bind(this)
     }
 
     componentDidMount(){
         fetch("api/Property/GetPropertiesList")
-         .then(response=> response.json() as Promise<Array<any>>)
+         .then(response=> response.json() as Promise<PropertyData>)
          .then(data=> {
              this.setState({
-                 propList: data,
+                 propData: data,
                  loading: false,
                 })
          })
     }
 
+    private handleSave(event: React.SyntheticEvent){
+        event.preventDefault();
+        const data = new FormData();
 
-    // private handleSave(){
-    //     const data = new FormData();
+        if (this.state.propData.propertyId){
+            fetch("api/PropertyData/Edit", {
+                method: "PUT",
 
-    //     if (this.state.propData.propertyId){
-    //         fetch("api/PropertyData/Edit", {
-    //             method: "PUT",
-
-    //         })
-    //     }
-
-    // }
+            })
+        }
+    }
 
     public render(){
         let contents = this.state.loading ?
         <p>Loading...</p> :
-        this.renderAddPropertyForm(this.state.propList);
+        this.renderAddPropertyForm();
     
         return (
             <div>
@@ -57,7 +75,7 @@ export class AdminForm extends Component<Props, AddPropertyDataState> {
         )
     }
     
-    private renderAddPropertyForm(propData){
+    private renderAddPropertyForm(){
     return (
         <div className="admin">
             <h3 className="align-center">To add a property, enter information below</h3>
