@@ -9,7 +9,7 @@ interface AddPropertyDataState {
 
 interface Props {}
 
-export class AdminForm extends Component<Props> {  
+export class AdminForm extends Component<Props, AddPropertyDataState> {  
     
     constructor(props: Props){
         super(props)
@@ -18,14 +18,46 @@ export class AdminForm extends Component<Props> {
             propList:[],
             propData: new PropertyData,
         }
+        // this.handleSave = this.handleSave.bind(this)
     }
 
     componentDidMount(){
         fetch("api/Property/GetPropertiesList")
          .then(response=> response.json() as Promise<Array<any>>)
+         .then(data=> {
+             this.setState({
+                 propList: data,
+                 loading: false,
+                })
+         })
+    }
+
+
+    // private handleSave(){
+    //     const data = new FormData();
+
+    //     if (this.state.propData.propertyId){
+    //         fetch("api/PropertyData/Edit", {
+    //             method: "PUT",
+
+    //         })
+    //     }
+
+    // }
+
+    public render(){
+        let contents = this.state.loading ?
+        <p>Loading...</p> :
+        this.renderAddPropertyForm(this.state.propList);
+    
+        return (
+            <div>
+                {contents}
+            </div>
+        )
     }
     
-    render(){
+    private renderAddPropertyForm(propData){
     return (
         <div className="admin">
             <h3 className="align-center">To add a property, enter information below</h3>
